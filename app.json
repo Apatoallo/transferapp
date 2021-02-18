@@ -1,0 +1,12 @@
+{
+  "name": "flv",
+  "displayName": "flv",
+  "expo": {
+    "name": "flv",
+    "slug": "flv",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
