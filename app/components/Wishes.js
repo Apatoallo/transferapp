@@ -26,6 +26,7 @@ function useWishes() {
                  fromLong: doc.fromLong,
                  toLong: doc.toLong,
                  travelTime: doc.travelTime,
+                 
                  ...doc.data()
              }))
              setWishes(newWishes)
@@ -163,6 +164,7 @@ const styles = StyleSheet.create({
       color: '#1F386D',
       fontWeight: '600',
     },
+  
     jet: {
       width: 18,
       height: 16,

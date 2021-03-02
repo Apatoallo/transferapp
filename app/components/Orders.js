@@ -5,8 +5,14 @@ import airplane from '../assets/icons/airplane100filled.png'
 import product from '../assets/images/product.png'
 import profile from '../assets/images/profilePhoto.png'
 import plane from '../assets/icons/tabIcons/plane.png'
+import storage from '@react-native-firebase/storage';
+
+
 const wwidth = Dimensions.get('window').width;
 const wheight = Dimensions.get('window').height;
+
+
+
 
 function useWishes() {
 
@@ -24,6 +30,7 @@ function useWishes() {
                  wished_to: doc.wished_to,
                  w_from_long: doc.w_from_long,
                  w_to_long: doc.w_to_long,
+                 images: doc.images,
                  ...doc.data()
              }))
              setWishes(newWishes)
@@ -163,13 +170,16 @@ const styles = StyleSheet.create({
     
   });
 
-const Item = ({ who_wished, title, wished_from, wished_to, w_from_long, w_to_long, travelTime }) => (
 
+
+const Item = ({ who_wished, title, wished_from, images, wished_to, w_from_long, w_to_long, travelTime }) => (
+    
     <View style={styles.item}>
 
         <View style={styles.topInfo}>
           <View>
             <Image style={styles.profileImage} source={profile}/>
+            
           </View>
           <View style={styles.topRight}>
             <Text style={styles.pcs}><Text style={styles.pcsNumber}>2 pcs</Text> Ordered</Text>
@@ -203,7 +213,7 @@ const Orders = () => {
 
     const wishlist = useWishes();
     const renderItem = ({ item }) => (
-        <Item wished_from={item.wished_from} wished_to={item.wished_to} w_to_long={item.w_to_long} w_from_long={item.w_from_long} travelTime={item.travelTime} title={item.name} who_wished={item.who_wished} />
+        <Item wished_from={item.wished_from} wished_to={item.wished_to} w_to_long={item.w_to_long} w_from_long={item.w_from_long} travelTime={item.travelTime} title={item.name} images={item.images} who_wished={item.who_wished} />
       );
     return(
         <>
