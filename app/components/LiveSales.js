@@ -6,9 +6,10 @@ import storage, { firebase } from '@react-native-firebase/storage';
 import CountDown from 'react-native-countdown-component';
 import airplane from '../assets/icons/airplane100filled.png'
 import product from '../assets/images/product.png'
-import profile from '../assets/images/profilePhoto.png'
 import plane from '../assets/icons/tabIcons/plane.png'
 import jettop from '../assets/icons/jettop.png'
+
+import profile from '../assets/images/profilePhoto.png'
 
 
 const wwidth = Dimensions.get('window').width;
@@ -59,6 +60,7 @@ function useWishes() {
                  spec2: doc.spec2,
                  spec1desc: doc.spec1desc,
                  spec1desc: doc.spec1desc,
+                 proImg: doc.proImg,
                  
                  ...doc.data()
              }))
@@ -106,7 +108,7 @@ function month(i) {
   }
 }
 
-const Item = ({visible, w_from_long, w_to_long, name, surname, leftTime, maxCapacity, productName, productPrice, imageName, imagess, spec1, spec2, spec1desc, spec2desc, departureHour, arriveHour }) => (
+const Item = ({visible, w_from_long, w_to_long, proImg, name, surname, leftTime, maxCapacity, productName, productPrice, imageName, imagess, spec1, spec2, spec1desc, spec2desc, departureHour, arriveHour }) => (
 <>
       {/* <ImageView
         images={imag}
@@ -120,7 +122,7 @@ const Item = ({visible, w_from_long, w_to_long, name, surname, leftTime, maxCapa
         <View style={styles.topInfo}>
           
           <View>
-            <Image style={styles.profileImage} source={profile}/>
+            <Image style={styles.profileImage} source={{url: proImg}}/>
           </View>
 
           <View style={styles.topRight}>
@@ -220,7 +222,7 @@ const LiveSales = () => {
     
 
     const renderItem = ({ item }) => (
-        <Item imagess={item.imageURL} departureHour={item.departureHour} arriveHour={item.arriveHour} w_from_long={item.w_from_long} w_to_long={item.w_to_long} name={item.name} surname={item.surname} leftTime={item.leftTime} maxCapacity={item.maxCapacity} productName={item.productName} productPrice={item.productPrice} imageName={item.imageName} spec1={item.spec1} spec2={item.spec2} spec1desc={item.spec1desc} spec2desc={item.spec2desc} />
+        <Item proImg={item.proImg} imagess={item.imageURL} departureHour={item.departureHour} arriveHour={item.arriveHour} w_from_long={item.w_from_long} w_to_long={item.w_to_long} name={item.name} surname={item.surname} leftTime={item.leftTime} maxCapacity={item.maxCapacity} productName={item.productName} productPrice={item.productPrice} imageName={item.imageName} spec1={item.spec1} spec2={item.spec2} spec1desc={item.spec1desc} spec2desc={item.spec2desc} />
       );
     return(
         <>
